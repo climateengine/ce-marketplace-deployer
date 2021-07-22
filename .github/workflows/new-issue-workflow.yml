@@ -1,0 +1,30 @@
+name: New issue workflow
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  apply-label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            console.log(context)
+            github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: [context.repo.repo]
+            })
+
+  add-issue-to-project:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+      with:
+        action-token: "${{ secrets.IP_ACCESS_TOKEN }}"
+        project-url: "https://github.com/orgs/climateengine/projects/1"
+        column-name: "Backlog - ROUGH SORT"
