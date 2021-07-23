@@ -1,0 +1,29 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: "climate-engine"
+  labels:
+    app.kubernetes.io/name: "climate-engine"
+spec:
+  selector:
+    matchLabels:
+     app.kubernetes.io/name: "climate-engine"
+  componentKinds:
+    - group: v1
+      kind: Service
+    - group: apps
+      kind: StatefulSet
+  addOwnerRef: true
+  descriptor:
+    type: "climate-engine"
+    links:
+      - description: About
+        url: "https://climateengine.com/"
+    version: "1.0.1"
+    description:
+    maintainers:
+      - name: Climate Engine Dev
+        email: dev@climateengine.com
+    owners:
+      - name: Climate Engine Admin
+        email: admin@climateengine.com

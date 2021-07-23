@@ -2,6 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: ce-marketplace-deployer
+  labels:
+    app.kubernetes.io/name: "climate-engine"
 spec:
   template:
     spec:
