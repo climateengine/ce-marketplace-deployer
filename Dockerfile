@@ -52,8 +52,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 ############################
 # Install kubectl
 ############################
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
-    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+RUN apt-get install kubectl -y && \
     kubectl version --client
 
 ############################
