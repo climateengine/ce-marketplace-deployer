@@ -1,0 +1,3 @@
+[submodule "ce-deployment"]
+	path = ce-deployment
+	url = git@github.com:climateengine/ce-scj-deployment.git
