@@ -8,6 +8,7 @@ ARG TERRAFORM_VERSION=1.0.3
 
 RUN apt-get update -y \
     && apt-get install --no-install-recommends -y \
+        curl \
         software-properties-common \
         python3 \
         unzip \
