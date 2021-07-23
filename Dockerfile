@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
+ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 
 ARG TERRAFORM_VERSION=1.0.3
 
