@@ -39,13 +39,16 @@ RUN \
 # Install gcloud
 ############################
 
-RUN curl -sSL https://sdk.cloud.google.com | bash
+RUN curl -sSL https://sdk.cloud.google.com | bash && \
+    gcloud --version
 
 
 ############################
 # Install kubectl
 ############################
-RUN gcloud components install kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    kubectl version --client
 
 ############################
 # Copy entrypoint.sh
