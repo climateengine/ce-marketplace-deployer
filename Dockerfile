@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM gcr.io/cloud-marketplace/google/ubuntu1804@sha256:5dfdec71771772fc68ff9c4dc510d0d86488fbf706a001df19bb37431359e47f
 
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
