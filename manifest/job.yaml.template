@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ce-marketplace-deployer
+  name: $name-deployer
   labels:
-    app.kubernetes.io/name: "climate-engine"
+    app.kubernetes.io/name: $name-deployer
 spec:
   template:
     spec:
@@ -20,3 +20,7 @@ spec:
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /var/secrets/google/key.json
+            - name: NAME
+              value: $name
+            - name: NAMESPACE
+              value: $namespace

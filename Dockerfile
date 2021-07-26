@@ -1,4 +1,4 @@
-FROM gcr.io/cloud-marketplace/google/ubuntu1804@sha256:5dfdec71771772fc68ff9c4dc510d0d86488fbf706a001df19bb37431359e47f
+FROM gcr.io/cloud-marketplace/google/ubuntu1804:latest
 
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
@@ -24,18 +24,11 @@ RUN apt-get update -y \
 # Install Terraform
 ################################
 
-# Download terraform for linux
-RUN wget --progress=dot:mega https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-
-RUN \
-	# Unzip
-	unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
-	# Move to local bin
-	mv terraform /usr/local/bin/ && \
-	# Make it executable
-	chmod +x /usr/local/bin/terraform && \
-	# Check that it's installed
-	terraform --version
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
+    apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+    apt-get update -y && \
+    apt-get install terraform -y && \
+    terraform --version
 
 
 ############################
