@@ -2,16 +2,16 @@ steps:
   # Build ce-deployer docker image
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
-      - --destination=gcr.io/$PROJECT_ID/ce-deployer
-      - --destination=gcr.io/climate-engine-public/climate-engine/ce-deployer
+      - --destination=gcr.io/$PROJECT_ID/ce-deployer:${${TAG_NAME:-latest}#v}
+      - --destination=gcr.io/climate-engine-public/climate-engine/ce-deployer:${${TAG_NAME:-latest}#v}
       - --cache=true
       - --cache-ttl=48h
       - --dockerfile=Dockerfile-ce-deployer
 
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
-      - --destination=gcr.io/$PROJECT_ID/deployer
-      - --destination=gcr.io/climate-engine-public/climate-engine/deployer
+      - --destination=gcr.io/$PROJECT_ID/deployer:${${TAG_NAME:-latest}#v}
+      - --destination=gcr.io/climate-engine-public/climate-engine/deployer:${${TAG_NAME:-latest}#v}
       - --cache=true
       - --cache-ttl=48h
       - --dockerfile=Dockerfile-mp-deployer
