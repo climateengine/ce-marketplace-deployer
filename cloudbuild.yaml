@@ -1,4 +1,22 @@
 steps:
+  # Access the id_github file from Secret Manager, and setup SSH
+  - name: 'gcr.io/cloud-builders/git'
+    secretEnv: ['SSH_KEY']
+    entrypoint: 'bash'
+    args:
+    - -c
+    - |
+      echo "$$SSH_KEY" >> /root/.ssh/id_rsa
+      chmod 400 /root/.ssh/id_rsa
+      cp known_hosts.github /root/.ssh/known_hosts
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  # Get submodules
+  - name: 'gcr.io/cloud-builders/git'
+    args: [ 'submodule', 'update', '--init', '--recursive' ]
+
   # Build ce-deployer docker image
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
@@ -16,3 +34,8 @@ steps:
       - --cache=true
       - --cache-ttl=48h
       - --dockerfile=Dockerfile-mp-deployer
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/378574554703/secrets/cloudbuild-github-key/versions/latest
+    env: 'SSH_KEY'
