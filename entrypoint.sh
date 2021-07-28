@@ -7,8 +7,8 @@ set -e
 
 gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 
-PROJECT_ID=$(gcloud config list --format 'value(core.project)')
-PROJECT_NAME=$(gcloud projects describe ${PROJECT_ID} --format="value(name)")
+PROJECT_ID=$(gcloud --quiet config list --format 'value(core.project)')
+PROJECT_NAME=$(gcloud --quiet projects describe ${PROJECT_ID} --format="value(name)")
 gcloud config set project "$PROJECT_ID"
 
 rm -rf .terraform*
