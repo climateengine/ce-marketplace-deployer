@@ -16,6 +16,7 @@ spec:
         - name: deployer
           # image: gcr.io/climate-engine-public/climate-engine/ce-deployer
           image: $ce_deployer_image
+          imagePullPolicy: Always
           volumeMounts:
             - name: google-cloud-key
               mountPath: /var/secrets/google
