@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: $name-deployer
+  name: $app_name-deployer
   labels:
-    app.kubernetes.io/name: $name-deployer
+    app.kubernetes.io/name: $app_name-deployer
 spec:
   template:
     spec:
@@ -13,14 +13,14 @@ spec:
             secretName: google-cloud-key
       containers:
         - name: deployer
-          image: {{ DEPLOYER_IMAGE }}
+          image: gcr.io/climate-engine-public/climate-engine/ce-deployer
           volumeMounts:
             - name: google-cloud-key
               mountPath: /var/secrets/google
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /var/secrets/google/key.json
-            - name: NAME
-              value: $name
+            - name: APP_NAME
+              value: $app_name
             - name: NAMESPACE
               value: $namespace

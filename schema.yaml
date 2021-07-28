@@ -12,7 +12,7 @@ x-google-marketplace:
   images: {}
 
 properties:
-  name:
+  app_name:
     type: string
     x-google-marketplace:
       type: NAME
@@ -22,6 +22,5 @@ properties:
       type: NAMESPACE
 
 required:
-- name
-- namespace
-- replicas
+  - app_name
+  - namespace

@@ -1,5 +1,17 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build',
-         '-t', 'gcr.io/climate-engine-public/deployer',
-         '.']
+  # Build ce-deployer docker image
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - --destination=gcr.io/$PROJECT_ID/ce-deployer
+      - --destination=gcr.io/climate-engine-public/climate-engine/ce-deployer
+      - --cache=true
+      - --cache-ttl=48h
+      - --dockerfile=Dockerfile-ce-deployer
+
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - --destination=gcr.io/$PROJECT_ID/deployer
+      - --destination=gcr.io/climate-engine-public/climate-engine/deployer
+      - --cache=true
+      - --cache-ttl=48h
+      - --dockerfile=Dockerfile-mp-deployer
