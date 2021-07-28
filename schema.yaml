@@ -13,6 +13,10 @@ x-google-marketplace:
       properties:
         ce_deployer_image:
           type: FULL
+  clusterConstraints:
+    assistedClusterCreation:
+      type: DISABLED
+      creationGuidance: "Create a minimal cluster with a Kubernetes secret containing the Service Account json."
 
 properties:
   app_name:
@@ -33,6 +37,8 @@ properties:
         base64: False
   sa_secret_name:
     type: string
+    title: "Kubernetes secret containing SA json"
+    default: "google-cloud-key"
 
 required:
   - app_name

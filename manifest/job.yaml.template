@@ -3,10 +3,11 @@ kind: Job
 metadata:
   name: $app_name-deployer
   labels:
-    app.kubernetes.io/name: $app_name-deployer
+    app.kubernetes.io/name: $app_name
 spec:
   template:
     spec:
+      restartPolicy: Never
       volumes:
         - name: google-cloud-key
           secret:
