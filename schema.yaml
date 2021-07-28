@@ -8,8 +8,11 @@ x-google-marketplace:
   publishedVersionMetadata:
     releaseNote: >-
       A first release.
-  # The images property will be filled in during part 2
-  images: {}
+  images:
+    ce-deployer:
+      properties:
+        ce_deployer_image:
+          type: FULL
 
 properties:
   app_name:
@@ -20,7 +23,19 @@ properties:
     type: string
     x-google-marketplace:
       type: NAMESPACE
+  sql_password:
+    type: string
+    x-google-marketplace:
+      type: GENERATED_PASSWORD
+      generatedPassword:
+        length: 10
+        includeSymbols: False
+        base64: False
+  sa_secret_name:
+    type: string
 
 required:
   - app_name
   - namespace
+  - sql_password
+  - sa_secret_name

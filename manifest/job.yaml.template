@@ -10,10 +10,11 @@ spec:
       volumes:
         - name: google-cloud-key
           secret:
-            secretName: google-cloud-key
+            secretName: $sa_secret_name
       containers:
         - name: deployer
-          image: gcr.io/climate-engine-public/climate-engine/ce-deployer
+          # image: gcr.io/climate-engine-public/climate-engine/ce-deployer
+          image: $ce_deployer_image
           volumeMounts:
             - name: google-cloud-key
               mountPath: /var/secrets/google
@@ -24,3 +25,5 @@ spec:
               value: $app_name
             - name: NAMESPACE
               value: $namespace
+            - name: SQL_PASSWORD
+              value: $sql_password
