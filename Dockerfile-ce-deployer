@@ -52,9 +52,9 @@ RUN apt-get install kubectl -y && \
 # Copy entrypoint.sh
 ############################
 
-CMD mkdir -p /ce-deployment
+RUN mkdir -p /ce-deployment
 WORKDIR /ce-deployment
 COPY ce-deployment/ .
 COPY entrypoint.sh .
 
-CMD entrypoint.sh
+CMD /ce-deployment/entrypoint.sh

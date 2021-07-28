@@ -8,6 +8,7 @@ steps:
       - --cache-ttl=48h
       - --dockerfile=Dockerfile-ce-deployer
 
+  # Marketplace Deployer (calls a Job to run CE Deployer)
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - --destination=gcr.io/$PROJECT_ID/deployer:latest
