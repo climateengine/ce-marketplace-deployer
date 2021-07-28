@@ -16,6 +16,9 @@ steps:
   # Get submodules
   - name: 'gcr.io/cloud-builders/git'
     args: [ 'submodule', 'update', '--init', '--recursive' ]
+    volumes:
+      - name: 'ssh'
+        path: /root/.ssh
 
   # Build ce-deployer docker image
   - name: 'gcr.io/kaniko-project/executor:latest'
