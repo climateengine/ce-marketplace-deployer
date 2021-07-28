@@ -22,5 +22,5 @@ echo app_name = \"${APP_NAME}\" >> terraform.tfvars
 echo namespace = \"${NAMESPACE}\" >> terraform.tfvars
 echo cloud_sql_pass = \"${SQL_PASSWORD}\" >> terraform.tfvars
 
-terraform init
-terraform apply -auto-approve
+terraform init -no-color
+terraform apply -auto-approve -no-color
