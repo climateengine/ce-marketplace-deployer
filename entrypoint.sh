@@ -3,7 +3,7 @@
 # Echo commands
 set -x
 # Exit when any command fails
-set -e
+#set -e
 
 gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 
@@ -13,14 +13,20 @@ gcloud config set project "$PROJECT_ID"
 
 rm -rf .terraform*
 
-gsutil mb -b on gs://${PROJECT_ID}-ce-deployment
+# Create bucket if doesn't exist
+gsutil ls -b gs://${PROJECT_ID}-ce-deployment || gsutil mb -b on gs://${PROJECT_ID}-ce-deployment
+
+ls .
 sed -i "s/bucket.*/bucket = \"${PROJECT_ID}-ce-deployment\"/g" terraform.tf
+cat terraform.tf
 
 echo project_id = \"${PROJECT_ID}\" > terraform.tfvars
 echo project_name = \"${PROJECT_NAME}\" >> terraform.tfvars
 echo app_name = \"${APP_NAME}\" >> terraform.tfvars
 echo namespace = \"${NAMESPACE}\" >> terraform.tfvars
 echo cloud_sql_pass = \"${SQL_PASSWORD}\" >> terraform.tfvars
+
+cat terraform.tfvars
 
 terraform init -no-color
 terraform apply -auto-approve -no-color
