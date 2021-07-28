@@ -17,6 +17,7 @@ RUN apt-get update -y \
         apt-transport-https \
         ca-certificates \
         gnupg \
+        openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
 
