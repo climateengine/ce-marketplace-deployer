@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+# Echo commands
 set -x
+# Exit when any command fails
+set -e
+
+gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 
 PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 PROJECT_NAME=$(gcloud projects describe ${PROJECT_ID} --format="value(name)")
