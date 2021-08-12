@@ -25,6 +25,9 @@ echo project_name = \"${PROJECT_NAME}\" >> terraform.tfvars
 echo app_name = \"${APP_NAME}\" >> terraform.tfvars
 echo namespace = \"${NAMESPACE}\" >> terraform.tfvars
 echo cloud_sql_pass = \"${SQL_PASSWORD}\" >> terraform.tfvars
+echo agent_encoded_key = \"${AGENT_ENCODED_KEY}\" >> terraform.tfvars
+echo agent_consumer_id = \"${AGENT_CONSUMER_ID}\" >> terraform.tfvars
+echo image_ubbagent = \"${IMAGE_UBBAGENT}\" >> terraform.tfvars
 
 cat terraform.tfvars
 

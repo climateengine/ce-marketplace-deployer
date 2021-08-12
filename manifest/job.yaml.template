@@ -29,3 +29,13 @@ spec:
               value: $namespace
             - name: SQL_PASSWORD
               value: $sql_password
+            - name: AGENT_ENCODED_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: $reportingSecret
+                  key: reporting-key
+            - name: AGENT_CONSUMER_ID
+              valueFrom:
+                secretKeyRef:
+                  name: $reportingSecret
+                  key: consumer-id

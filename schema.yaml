@@ -39,6 +39,15 @@ properties:
     type: string
     title: "Kubernetes secret containing SA json"
     default: "google-cloud-key"
+  imageUbbagent:
+    type: string
+    default: gcr.io/cloud-marketplace-tools/metering/ubbagent:latest
+    x-google-marketplace:
+      type: IMAGE
+  reportingSecret:
+    type: string
+    x-google-marketplace:
+      type: REPORTING_SECRET
 
 required:
   - app_name
