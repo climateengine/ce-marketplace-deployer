@@ -3,7 +3,7 @@
 
 ## Pre Installation
 
-  1. Create a minimal GKE cluster (installation will expand the cluster as needed)
+  1. Create a minimal GKE cluster (Autopilot is sufficient)
   1. [Connect to the cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#generate_kubeconfig_entry)
      so that `kubectl` commands work
   1. [Create a Service Account](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
@@ -21,10 +21,45 @@ Follow instructions on GCP Marketplace
 ## Manual Install
 
 ## Development Install
-  1. `gcloud config set project $TEST_PROJECT_ID`
-  2. Install the Application CRD: `kubectl apply -f "https://raw.githubusercontent.com/GoogleCloudPlatform/marketplace-k8s-app-tools/master/crd/app-crd.yaml"`
-  3. `mpdev install --deployer=gcr.io/ce-deployment/deployer --parameters='{"app_name": "test-deployment", "namespace": "test-ns", "sql_password": "asdfasdfasdf", "sa_secret_name": "google-cloud-key" }'`
-
+  1. `export PROJECT_ID=[project_id]`
+  2. `gcloud config set project $PROJECT_ID`
+  3. Create Autopilot cluster:
+     ```shell
+     gcloud beta container clusters create-auto "autopilot-cluster-1" --region "us-central1"
+     ```
+  4. Connect to cluster:
+     ```shell
+     gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1
+     ```
+  5. Install the Application CRD:
+     ```shell
+     kubectl apply -f "https://raw.githubusercontent.com/GoogleCloudPlatform/marketplace-k8s-app-tools/master/crd/app-crd.yaml"
+     ```
+  6. Create Service account:
+     ```shell
+     gcloud iam service-accounts create climate-engine --display-name="Climate Engine Service Account"
+     ```
+  7. Grant `roles/owner` on service account:
+     ```shell
+     gcloud iam service-accounts add-iam-policy-binding \
+       climate-engine@${PROJECT_ID}.iam.gserviceaccount.com \
+       --member="serviceAccount:climate-engine@${PROJECT_ID}.iam.gserviceaccount.com" \
+       --role='roles/owner'
+     ```  
+  8. Generate json key:
+     ```shell
+     gcloud iam service-accounts keys create \
+       climate-engine-${PROJECT_ID}.json \
+       --iam-account=climate-engine@${PROJECT_ID}.iam.gserviceaccount.com
+     ```
+  9. Add JSON key to GKE:
+     ```shell
+     kubectl create secret generic google-cloud-key --from-file=key.json=climate-engine-${PROJECT_ID}.json
+     ```  
+  10. Dev install:
+      ```shell
+      mpdev install --deployer=gcr.io/ce-deployment/deployer --parameters='{"app_name": "test-deployment", "namespace": "test-ns", "sql_password": "asdfasdfasdf", "sa_secret_name": "google-cloud-key" }'
+      ```
 
 
 ## Licence
