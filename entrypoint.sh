@@ -27,7 +27,7 @@ echo namespace = \"${NAMESPACE}\" >> terraform.tfvars
 echo cloud_sql_pass = \"${SQL_PASSWORD}\" >> terraform.tfvars
 echo agent_encoded_key = \"${AGENT_ENCODED_KEY}\" >> terraform.tfvars
 echo agent_consumer_id = \"${AGENT_CONSUMER_ID}\" >> terraform.tfvars
-echo image_ubbagent = \"${IMAGE_UBBAGENT}\" >> terraform.tfvars
+echo image_ubbagent = \"${IMAGE_UBBAGENT:=gcr.io/cloud-marketplace-tools/metering/ubbagent:latest}\" >> terraform.tfvars
 
 cat terraform.tfvars
 
