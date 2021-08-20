@@ -29,6 +29,8 @@ spec:
               value: $namespace
             - name: SQL_PASSWORD
               value: $sql_password
+            - name: IMAGE_UBBAGENT
+              value: $image_ubbagent
             - name: AGENT_ENCODED_KEY
               valueFrom:
                 secretKeyRef:

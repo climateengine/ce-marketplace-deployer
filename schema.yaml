@@ -55,3 +55,4 @@ required:
   - namespace
   - sql_password
   - sa_secret_name
+  - reportingSecret
