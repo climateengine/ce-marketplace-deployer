@@ -4,7 +4,7 @@ x-google-marketplace:
   applicationApiVersion: v1beta1
   # The published version is required and MUST match the tag
   # of the deployer image
-  publishedVersion: '1.0.2'
+  publishedVersion: '1.0.3'
   publishedVersionMetadata:
     releaseNote: >-
       A first release.
@@ -13,11 +13,6 @@ x-google-marketplace:
       properties:
         ce_deployer_image:
           type: FULL
-    ubbagent:
-      properties:
-        image_ubbagent:
-          type: FULL
-          # default: gcr.io/cloud-marketplace-tools/metering/ubbagent:latest
 
   clusterConstraints:
     assistedClusterCreation:
