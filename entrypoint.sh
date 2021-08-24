@@ -32,4 +32,5 @@ echo image_ubbagent = \"${IMAGE_UBBAGENT:=gcr.io/cloud-marketplace-tools/meterin
 cat terraform.tfvars
 
 terraform init -no-color
+sleep 60
 terraform apply -auto-approve -no-color

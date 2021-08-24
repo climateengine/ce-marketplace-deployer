@@ -25,6 +25,7 @@ Follow instructions on GCP Marketplace
   2. `gcloud config set project $PROJECT_ID`
   3. Create Autopilot cluster:
      ```shell
+     gcloud services enable container.googleapis.com
      gcloud beta container clusters create-auto "autopilot-cluster-1" --region "us-central1"
      ```
   4. Connect to cluster:
@@ -41,10 +42,7 @@ Follow instructions on GCP Marketplace
      ```
   7. Grant `roles/owner` on service account:
      ```shell
-     gcloud iam service-accounts add-iam-policy-binding \
-       climate-engine@${PROJECT_ID}.iam.gserviceaccount.com \
-       --member="serviceAccount:climate-engine@${PROJECT_ID}.iam.gserviceaccount.com" \
-       --role='roles/owner'
+     gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:climate-engine@${PROJECT_ID}.iam.gserviceaccount.com" --role="roles/owner"
      ```  
   8. Generate json key:
      ```shell
@@ -56,9 +54,15 @@ Follow instructions on GCP Marketplace
      ```shell
      kubectl create secret generic google-cloud-key --from-file=key.json=climate-engine-${PROJECT_ID}.json
      ```  
-  10. Dev install:
+  10. Add fake billing key to k8s:
+      ```
+      gsutil cp gs://cloud-marketplace-tools/reporting_secrets/fake_reporting_secret.yaml .
+      echo "metadata: {name: fake-reporting-secret}" >> fake_reporting_secret.yaml
+      kubectl apply -f fake_reporting_secret.yaml
+      ```
+  11. Dev install:
       ```shell
-      mpdev install --deployer=gcr.io/ce-deployment/deployer --parameters='{"app_name": "test-deployment", "namespace": "test-ns", "sql_password": "asdfasdfasdf", "sa_secret_name": "google-cloud-key" }'
+      mpdev install --deployer=gcr.io/ce-deployment/deployer --parameters='{"app_name": "test-deployment", "namespace": "default", "sql_password": "asdfasdfasdf", "sa_secret_name": "google-cloud-key" }'
       ```
 
 
