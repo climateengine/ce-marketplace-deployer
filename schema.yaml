@@ -42,7 +42,7 @@ properties:
     default: "google-cloud-key"
   reportingSecret:
     type: string
-    default: "notasecret"
+    default: "fake-reporting-secret"
     x-google-marketplace:
       type: REPORTING_SECRET
 
