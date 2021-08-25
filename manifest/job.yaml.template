@@ -31,6 +31,10 @@ spec:
               value: $namespace
             - name: SQL_PASSWORD
               value: $sql_password
+            - name: ENABLE_BATCH
+              value: "false"
+            - name: ENABLE_UBBAGENT
+              value: "true"
             - name: AGENT_ENCODED_KEY
               valueFrom:
                 secretKeyRef:

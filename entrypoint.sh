@@ -31,6 +31,8 @@ echo project_name = \"${PROJECT_NAME}\" >> terraform.tfvars
 echo app_name = \"${APP_NAME}\" >> terraform.tfvars
 echo namespace = \"${NAMESPACE}\" >> terraform.tfvars
 echo cloud_sql_pass = \"${SQL_PASSWORD}\" >> terraform.tfvars
+echo enable_batch = \"${ENABLE_BATCH,,}\" >> terraform.tfvars  # Converted to lowercase
+echo enable_ubbagent = \"${ENABLE_UBBAGENT,,}\" >> terraform.tfvars  # Converted to lowercase
 echo agent_encoded_key = \"${AGENT_ENCODED_KEY}\" >> terraform.tfvars
 echo agent_consumer_id = \"${AGENT_CONSUMER_ID}\" >> terraform.tfvars
 echo image_ubbagent = \"${IMAGE_UBBAGENT:=gcr.io/cloud-marketplace-tools/metering/ubbagent:latest}\" >> terraform.tfvars
