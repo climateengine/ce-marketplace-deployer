@@ -9,21 +9,14 @@ spec:
   template:
     spec:
       restartPolicy: Never
-      volumes:
-        - name: google-cloud-key
-          secret:
-            secretName: $sa_secret_name
       containers:
         - name: ce-deployer
           # image: gcr.io/climate-engine-public/climate-engine/ce-deployer:VERSION
           image: $ce_deployer_image
           imagePullPolicy: Always
-          volumeMounts:
-            - name: google-cloud-key
-              mountPath: /var/secrets/google
           env:
-            - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: /var/secrets/google/key.json
+            - name: SA_SECRET_NAME
+              value: $sa_secret_name
             - name: APP_NAME
               value: $app_name
             - name: NAMESPACE

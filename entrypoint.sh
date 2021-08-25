@@ -5,6 +5,17 @@ set -x
 # Exit when any command fails
 #set -e
 
+
+if ! kubectl get secrets "$SA_SECRET_NAME" ; then
+  echo "SA secret $SA_SECRET_NAME not found!"
+  exit 0
+fi
+
+# Extract secret from k8s
+kubectl get secrets "$SA_SECRET_NAME" -o json | jq -j '.data | map_values(@base64d) | .[]' > /ce-deployment/key.json
+
+export GOOGLE_APPLICATION_CREDENTIALS=/ce-deployment/key.json
+
 gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 
 PROJECT_ID=$(gcloud config list --format 'value(core.project)')
@@ -32,5 +43,5 @@ echo image_ubbagent = \"${IMAGE_UBBAGENT:=gcr.io/cloud-marketplace-tools/meterin
 cat terraform.tfvars
 
 terraform init -no-color
-sleep 60
+sleep 5
 terraform apply -auto-approve -no-color

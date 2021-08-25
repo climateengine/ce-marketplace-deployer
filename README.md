@@ -55,7 +55,7 @@ Follow instructions on GCP Marketplace
      kubectl create secret generic google-cloud-key --from-file=key.json=climate-engine-${PROJECT_ID}.json
      ```  
   10. Add fake billing key to k8s:
-      ```
+      ```shell
       gsutil cp gs://cloud-marketplace-tools/reporting_secrets/fake_reporting_secret.yaml .
       echo "metadata: {name: fake-reporting-secret}" >> fake_reporting_secret.yaml
       kubectl apply -f fake_reporting_secret.yaml
