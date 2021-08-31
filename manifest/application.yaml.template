@@ -19,7 +19,7 @@ spec:
     links:
       - description: About
         url: "https://climateengine.com/"
-    version: "1.0.3"
+    version: "1.0.4"
     maintainers:
       - name: Climate Engine Dev
         email: dev@climateengine.com

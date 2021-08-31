@@ -26,11 +26,11 @@ Follow instructions on GCP Marketplace
   3. Create Autopilot cluster:
      ```shell
      gcloud services enable container.googleapis.com
-     gcloud beta container clusters create-auto "autopilot-cluster-1" --region "us-central1"
+     gcloud beta container clusters create "climate-engine-1" --zone "us-central1-c" --machine-type "e2-medium" --num-nodes "1" --node-locations "us-central1-c" 
      ```
   4. Connect to cluster:
      ```shell
-     gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1
+     gcloud container clusters get-credentials climate-engine-1 --zone "us-central1-c"
      ```
   5. Install the Application CRD:
      ```shell
