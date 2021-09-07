@@ -28,3 +28,24 @@ spec:
     owners:
       - name: Climate Engine Admin
         email: admin@climateengine.com
+    description: |-
+      Climate Engine is a Google Earth Engine Enterprise Solution on Google Cloud.
+      Climate Engine helps organizations convert Earth data and sciences into actionable business intelligence at scales from the global to the hyper-local. We do this by operationalizing the world’s leading science and Earth Observation data to track risks, better predict the impacts of extreme events, gain critical insights into changes, and understand opportunities for increased sustainability and climate resilience. We do this by providing an ecosystem of science partnerships combined with the power of Google Earth Engine and the big data infrastructure of Google Cloud. Climate Engine delivers decision-ready insights across a broad range of sectors including financial services, agriculture, water, natural resources, supply chain, health, and infrastructure.
+
+      Features include:
+        - Climate Engine API Catalogue: Leverage our curated library and partnership ecosystem to access a "No Code" solution with over 100+ preconfigured APIs to deliver climate and earth observation insights for decision support related to flood, wildfire, drought, water use, agriculture, and natural resource management.
+        - Accelerated data ingest and catalogue features to bring in your own data and any other external data into one interoperable system.
+        - Integration with Google Earth Engine data catalogue which contains over 600+ high-value climate, ecology and weather data sets spanning more than forty years of historical imagery and scientific datasets, updated and expanded daily including Landsat, Sentinel, MODIS and other sources.
+        - Perform a multitude of statistical analyses including Max, Min, Mean, Median, Standard Deviation, Percentiles, Difference From Avg, Counts, and Trends.
+
+    notes: |-
+      Climate Engine creates a private GKE cluster and an External Ingress with a global IP.
+
+      You can find the IP address of your Climate Engine instance with the following command:
+      ```
+      gcloud compute addresses list --filter="name=(api-ingress-ip)" --format="value(address)"
+      ```
+
+      **WARNING:** by default there is no access control on Climate Engine.
+      To control access you must enable Cloud Armor, Identity-Aware Proxy, or other network-level security schemes.
+
