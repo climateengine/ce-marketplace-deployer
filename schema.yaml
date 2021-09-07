@@ -17,7 +17,12 @@ x-google-marketplace:
   clusterConstraints:
     assistedClusterCreation:
       type: DISABLED
-      creationGuidance: "Create a minimal cluster with a Kubernetes secret containing the Service Account json."
+      creationGuidance: >-
+        The install cluster must:
+          - Be GKE Standard (not Autopilot)
+          - Have at least one node with machine type "e2-medium"
+          - Contain a Kubernetes Secret containing the JSON key of a Service Account with Owner permissions
+        For more detailed information see: https://github.com/climateengine/ce-marketplace-deployer#readme
 
 properties:
   app_name:
