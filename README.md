@@ -17,7 +17,7 @@
      https://console.cloud.google.com/marketplace/product/climate-engine-public/climate-engine
 
 ### Command Line Pre Install
-tl;dr: see [prep_cluster.sh](prep_cluster.sh)
+tl;dr: see [prep_cluster.sh](scripts/prep_cluster.sh)
 
   1. `export PROJECT_ID=[project_id]`
   2. `gcloud config set project $PROJECT_ID`
@@ -53,7 +53,7 @@ tl;dr: see [prep_cluster.sh](prep_cluster.sh)
 
 
 ## Development Install
-tl;dr: see [dev_install.sh](dev_install.sh)
+tl;dr: see [dev_install.sh](scripts/dev_install.sh)
 
   1. Install `mpdev` tool: https://github.com/GoogleCloudPlatform/marketplace-k8s-app-tools/blob/master/docs/tool-prerequisites.md
   2. `export PROJECT_ID=[project_id]`

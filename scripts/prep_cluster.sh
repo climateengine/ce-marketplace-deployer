@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -x  # Echo commands
+set -u  # Nounset
+
 # export PROJECT_ID=[gcp_project_id]
 gcloud config set project $PROJECT_ID
 gcloud services enable container.googleapis.com
