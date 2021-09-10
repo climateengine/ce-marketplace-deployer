@@ -102,6 +102,7 @@ tl;dr: see [dev_install.sh](dev_install.sh)
   13. Dev install:
       ```shell
       docker pull gcr.io/ce-deployment/deployer:latest
+      mpdev verify --deployer=gcr.io/ce-deployment/deployer:latest
       mpdev install --deployer=gcr.io/ce-deployment/deployer:latest --parameters='{"app_name": "test-deployment", "namespace": "default", "sql_password": "asdfasdfasdf", "sa_secret_name": "google-cloud-key" }'
       ```
 
