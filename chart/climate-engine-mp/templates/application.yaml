@@ -22,6 +22,9 @@ spec:
       kind: Service
     - group: apps
       kind: Deployment
+    - group: autoscaling
+      kind: HorizontalPodAutoscaler
+
   descriptor:
     type: "climate-engine"
     links:
