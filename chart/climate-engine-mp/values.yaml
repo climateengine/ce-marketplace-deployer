@@ -8,3 +8,8 @@ global:
     dbname: ""
     user: ""
     password: ""
+
+# We aren't deploying batch in MP yet
+climate-engine:
+  ce-batch-api:
+    enabled: false
