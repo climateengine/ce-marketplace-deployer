@@ -208,6 +208,14 @@ properties:
 required:
   - app_name
   - namespace
-  - sql_password
-  - sa_secret_name
-  - reportingSecret
+  - ce-billing-agent.reporting_secret
+  - ce-infra-deployer.bucket_create_new
+  - global.bucket_name
+  - ce-infra-deployer.sql_create_new
+  - ce-infra-deployer.sql_instance_name
+  - ce-infra-deployer.sql_suffix
+  - global.postgres.host
+  - global.postgres.dbname
+  - global.postgres.user
+  - global.postgres.password
+  - ce-infra-deployer.sa_secret_name
