@@ -1,9 +1,7 @@
 # Climate Engine GCP Marketplace Installer
 
 ## TODO
-  - Change to helm
-  - change application to helm
-  - 
+  - Cannot use climate-engine service account to deploy b/c tf tries to recreate it
 
 
 ## Installation Overview
