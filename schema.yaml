@@ -125,6 +125,7 @@ properties:
 
   # Create new GCS Bucket?
   ce-infra-deployer.bucket_create_new:
+    type: boolean
     title: "Create GCS bucket"
     description: >-
       Whether to automatically create a new cloud storage bucket for Climate Engine assets.
@@ -140,6 +141,7 @@ properties:
 
   # Create new Cloud SQL?
   ce-infra-deployer.sql_create_new:
+    type: boolean
     title: "Create Cloud SQL instance"
     description: >-
       Whether to automatically create a new Cloud SQL instance.
