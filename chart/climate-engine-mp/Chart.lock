@@ -1,0 +1,12 @@
+dependencies:
+- name: climate-engine
+  repository: file://../../ce-deployment/helm/climate-engine
+  version: 1.0.4
+- name: ce-infra-deployer
+  repository: file://../../ce-deployment/helm/ce-infra-deployer
+  version: 1.0.4
+- name: ce-billing-agent
+  repository: ""
+  version: 1.0.4
+digest: sha256:99c9af5eea077003a3f9858de085603ad93b7b702abebce8749df69e30464bf4
+generated: "2021-09-14T22:25:53.796505053-04:00"
