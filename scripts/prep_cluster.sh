@@ -12,3 +12,4 @@ gcloud iam service-accounts create climate-engine --display-name="Climate Engine
 gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:climate-engine@${PROJECT_ID}.iam.gserviceaccount.com" --role="roles/owner"
 gcloud iam service-accounts keys create climate-engine-${PROJECT_ID}.json --iam-account=climate-engine@${PROJECT_ID}.iam.gserviceaccount.com
 kubectl create secret generic google-cloud-key --from-file=key.json=climate-engine-${PROJECT_ID}.json
+rm climate-engine-${PROJECT_ID}.json

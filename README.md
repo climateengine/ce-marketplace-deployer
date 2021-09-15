@@ -1,5 +1,10 @@
 # Climate Engine GCP Marketplace Installer
 
+## TODO
+  - Change to helm
+  - change application to helm
+  - 
+
 
 ## Installation Overview
 
@@ -13,6 +18,7 @@
      a json key for the service account
   5. Create a Kubernetes secret containing the json key by running the following: 
      `kubectl create secret generic google-cloud-key --from-file=key.json=PATH-TO-KEY-FILE.json`
+     (Note that the key within the secret *must* be named `key.json`)
   6. Install using the GCP Marketplace listing:
      https://console.cloud.google.com/marketplace/product/climate-engine-public/climate-engine
 
@@ -48,6 +54,7 @@ tl;dr: see [prep_cluster.sh](scripts/prep_cluster.sh)
      ```shell
      kubectl create secret generic google-cloud-key --from-file=key.json=climate-engine-${PROJECT_ID}.json
      ```  
+     (Note that the key within the secret *must* be named `key.json` as it is in the above command)
   9. Install using the GCP Marketplace listing:
      https://console.cloud.google.com/marketplace/product/climate-engine-public/climate-engine
 

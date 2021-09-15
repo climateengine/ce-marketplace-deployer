@@ -1,0 +1,2 @@
+image: "gcr.io/cloud-marketplace-tools/metering/ubbagent"
+reporting_secret: ""

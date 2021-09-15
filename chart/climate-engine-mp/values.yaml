@@ -1,0 +1,10 @@
+# These values get populated from Marketplace
+# They should have matching values in schema.yaml
+
+global:
+  bucket_name: ""
+  postgres:
+    host: ""
+    dbname: ""
+    user: ""
+    password: ""

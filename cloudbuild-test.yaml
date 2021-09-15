@@ -20,6 +20,15 @@ steps:
       - name: 'ssh'
         path: /root/.ssh
 
+  # Build ce-deployer docker image
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - --destination=gcr.io/$PROJECT_ID/ce-deployer:latest
+      - --destination=gcr.io/climate-engine-public/climate-engine/ce-deployer:latest
+      - --cache=true
+      - --cache-ttl=48h
+      - --dockerfile=Dockerfile-ce-deployer
+
   # Marketplace Deployer (calls a Job to run CE Deployer)
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
