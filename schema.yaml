@@ -199,7 +199,7 @@ properties:
         includeSymbols: False
         base64: False
 
-  ce-infra-deployer.sa_secret_name:
+  global.sa_secret_name:
     title: "Kubernetes Secret SA json"
     description: >-
       Required for automatic configuration. See detailed instructions.
@@ -220,4 +220,4 @@ required:
   - global.postgres.dbname
   - global.postgres.user
   - global.postgres.password
-  - ce-infra-deployer.sa_secret_name
+  - global.sa_secret_name
