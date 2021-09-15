@@ -10,4 +10,4 @@ kubectl apply -f "https://raw.githubusercontent.com/GoogleCloudPlatform/marketpl
 kubectl apply -f fake_reporting_secret.yaml
 docker pull gcr.io/ce-deployment/deployer:latest
 mpdev verify --deployer=gcr.io/ce-deployment/deployer
-mpdev install --deployer=gcr.io/ce-deployment/deployer --parameters='{"app_name": "test-deployment", "test-ns": "default", "sql_password": "asdfasdfasdf", "sa_secret_name": "google-cloud-key" }'
+mpdev install --deployer=gcr.io/ce-deployment/deployer --parameters='{"app_name": "test-deployment", "namespace": "default"}'
