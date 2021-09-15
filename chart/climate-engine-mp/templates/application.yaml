@@ -16,6 +16,12 @@ spec:
   componentKinds:
     - group: batch
       kind: Job
+    - group: ''
+      kind: Secret
+    - group: ''
+      kind: Service
+    - group: apps
+      kind: Deployment
   descriptor:
     type: "climate-engine"
     links:

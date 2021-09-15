@@ -9,9 +9,9 @@ appVersion: "1.0.4"
 dependencies:
   - name: climate-engine
     version: 1.0.4
-    repository: "file://../ce-deployment/helm/climate-engine"
+    repository: "file://../../ce-deployment/helm/climate-engine"
   - name: ce-infra-deployer
     version: 1.0.4
-    repository: "file://../ce-deployment/helm/ce-infra-deployer"
+    repository: "file://../../ce-deployment/helm/ce-infra-deployer"
   - name: ce-billing-agent
     version: 1.0.4
