@@ -24,8 +24,10 @@ steps:
     args:
       - --destination=gcr.io/$PROJECT_ID/deployer:${_IMAGE_TAG_MINOR}
       - --destination=gcr.io/$PROJECT_ID/deployer:${_IMAGE_TAG_MAJOR}
+      - --destination=gcr.io/$PROJECT_ID/deployer:latest
       - --destination=gcr.io/climate-engine-public/climate-engine/deployer:${_IMAGE_TAG_MINOR}
       - --destination=gcr.io/climate-engine-public/climate-engine/deployer:${_IMAGE_TAG_MAJOR}
+      - --destination=gcr.io/climate-engine-public/climate-engine/deployer:latest
       - --cache=true
       - --cache-ttl=48h
       - --dockerfile=Dockerfile
