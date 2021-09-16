@@ -3,15 +3,15 @@ name: climate-engine-mp
 description: Climate Engine Marketplace Deployer
 type: application
 
-version: 1.0.4
-appVersion: "1.0.4"
+version: 1.0.5
+appVersion: "1.0.5"
 
 dependencies:
   - name: climate-engine
-    version: 1.0.4
+    version: 1.0.5
     repository: "file://../../ce-deployment/helm/climate-engine"
   - name: ce-infra-deployer
-    version: 1.0.4
+    version: 1.0.5
     repository: "file://../../ce-deployment/helm/ce-infra-deployer"
   - name: ce-billing-agent
-    version: 1.0.4
+    version: 1.0.5
