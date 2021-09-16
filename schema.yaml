@@ -204,7 +204,7 @@ properties:
     description: >-
       Required for automatic configuration. See detailed instructions.
     type: string
-    default: "google-cloud-key"
+    default: ""
 
 
 required:
