@@ -18,21 +18,15 @@ x-google-marketplace:
     assistedClusterCreation:
       type: DISABLED
       creationGuidance: >-
-        The install cluster must:
-          - Be GKE Standard (not Autopilot)
-          - Have at least one node with machine type "e2-medium" or larger
-
-        Additional requirements:
-          - Cluster must contain a Kubernetes Secret containing the JSON key of a Service Account with Owner role
-          - OR a preconfigured Cloud SQL and GCS bucket.
-
-        For more detailed information see: https://github.com/climateengine/ce-marketplace-deployer#readme
+        The cluster must be GKE Standard (not Autopilot) and have at least six (6) nodes with
+        machine type "e2-medium" or larger. Climate Engine also requires other Google Cloud resources.
+        See sidebar for additional requirements.
 
 form:
 - widget: help
   description: >-
     <h2>Additional Requirements</h2>
-    <p>In addition to GKE, Climate Engine requires access to a Postgres Cloud SQL instance, and a GCS bucket.
+    <p>In addition to GKE, Climate Engine requires access to a Postgres 13 Cloud SQL instance, and a GCS bucket.
     These can be created automatically or manually.</p>
 
     <h3>Automatic Creation</h3>
