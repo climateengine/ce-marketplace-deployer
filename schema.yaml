@@ -123,7 +123,6 @@ properties:
     title: "Create GCS bucket"
     description: >-
       Whether to automatically create a new cloud storage bucket for Climate Engine assets.
-      If not creating new GCS bucket, GCS bucket must already exist and GKE Service Account must have read/write permissions.
     default: true
 
   global.bucket_name:
@@ -187,11 +186,7 @@ properties:
       Required for manual configuration. Automatically generated if blank.
     type: string
     x-google-marketplace:
-      type: GENERATED_PASSWORD
-      generatedPassword:
-        length: 10
-        includeSymbols: False
-        base64: False
+      type: MASKED_FIELD
 
   global.sa_secret_name:
     title: "Kubernetes Secret SA json"
@@ -206,12 +201,5 @@ required:
   - namespace
   - ce-billing-agent.reporting_secret
   - ce-infra-deployer.bucket_create_new
-  - global.bucket_name
   - ce-infra-deployer.sql_create_new
-  - ce-infra-deployer.sql_instance_name
   - ce-infra-deployer.sql_suffix
-  - global.postgres.host
-  - global.postgres.dbname
-  - global.postgres.user
-  - global.postgres.password
-  - global.sa_secret_name

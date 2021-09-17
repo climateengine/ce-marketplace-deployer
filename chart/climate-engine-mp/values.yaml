@@ -2,12 +2,19 @@
 # They should have matching values in schema.yaml
 
 global:
+  sa_secret_name: ""
   bucket_name: ""
   postgres:
     host: ""
     dbname: ""
     user: ""
     password: ""
+
+ce-infra-deployer:
+  bucket_create_new: true
+  sql_create_new: true
+  sql_instance_name: ""
+  sql_suffix: ""
 
 # We aren't deploying batch in MP yet
 climate-engine:
