@@ -9,6 +9,7 @@ global:
     dbname: ""
     user: ""
     password: ""
+    generated_password: ""
 
 ce-infra-deployer:
   bucket_create_new: true

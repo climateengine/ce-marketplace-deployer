@@ -162,21 +162,21 @@ properties:
   global.postgres.host:
     title: "SQL hostname"
     description: >-
-      Required for manual configuration.
+      Required for manual configuration. Do not set for automatic creation.
     type: string
     default: ""
 
   global.postgres.dbname:
     title: "SQL database"
     description: >-
-      Required for manual configuration.
+      Required for manual configuration. Automatically generated if blank.
     type: string
     default: ""
 
   global.postgres.user:
     title: "SQL username"
     description: >-
-      Required for manual configuration.
+      Required for manual configuration. Automatically generated if blank.
     type: string
     default: ""
 
@@ -187,6 +187,16 @@ properties:
     type: string
     x-google-marketplace:
       type: MASKED_FIELD
+
+  global.postgres.generated_password:
+    title: "Generated password for SQL"
+    type: string
+    x-google-marketplace:
+      type: GENERATED_PASSWORD
+      generatedPassword:
+        length: 16
+        includeSymbols: False
+        base64: False
 
   global.sa_secret_name:
     title: "Kubernetes Secret SA json"
@@ -203,3 +213,4 @@ required:
   - ce-infra-deployer.bucket_create_new
   - ce-infra-deployer.sql_create_new
   - ce-infra-deployer.sql_suffix
+  - global.postgres.generated_password
