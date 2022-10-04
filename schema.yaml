@@ -9,7 +9,7 @@ x-google-marketplace:
     releaseNote: >-
       A first release.
   images:
-    ce-deployer:
+    deployer:
       properties:
         ce_deployer_image:
           type: FULL
